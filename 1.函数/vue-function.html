@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-function</title>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+</head>
+<body>
+    <div id="app">
+        {{a}}
+    </div>
+
+<script type="text/javascript">
+    var data = { a:"1"};
+    var vm = new Vue({
+        el:'#app',
+        data:data
+    });
+
+    vm.$watch('a',function(newVal,oldVal){
+        console.log(newVal,oldVal);
+    });
+
+    data.a = "test"
+</script>
+</body>
+</html>

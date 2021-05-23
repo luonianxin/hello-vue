@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单输入绑定</title>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+</head>
+<body>
+<div id="app">
+    本案例演示的是表单输入绑定:<br/>
+    <p>==========文本输入===========</p>
+    <input v-model="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
+    <p>==========多行文本输入===========</p>
+    <span>多行文本输入的信息是：</span>
+    <p style="white-space:pre-line">{{multipleMessage}}</p><br/>
+    <textarea v-model="multipleMessage" placeholder="请输入多行数据"></textarea>
+    <p>==========复选框===========</p>
+    <span>单个复选框绑定到布尔值</span>
+    <br/>
+    <input type="checkbox" id="checkbox" v-model="checkStatus"/>
+    <label for="checkbox" >{{checkStatus}}</label>
+    <br/>
+    <span>多个复选框绑定到数组</span>
+    <br/>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+    <br/>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+    <br/>
+    <h3>======下拉选择框=======</h3><br/>
+    <h4>单选</h4>
+    <select v-model="selected">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+    <br/>
+    <h4>多选</h4>
+    <select v-model="multipleSelected" multiple>
+        <option disabled value="">请选择</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+    <span>Selected: {{ multipleSelected }}</span>
+    <br/>
+    <h3>使用ｖ－ｆｏｒ动态渲染选择项</h3>
+    <br/>
+    <select v-model="dynamicSelected">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ dynamicSelected }}</span>
+</div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: '',
+            multipleMessage: '',
+            checkStatus: false,
+            checkedNames: [],
+            picked: '',
+            selected: '',
+            multipleSelected: [],
+            options:[
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ],
+            dynamicSelected: ''
+        }
+    });
+
+</script>
+</body>
+</html>

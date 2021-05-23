@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+</head>
+<body>
+<div id="app">
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+    </template>
+    <button @click="click">click to change logginType</button>
+    <br/>
+    ==============================以下是测试元素动态渲染的==================================
+    <br/>
+    <template v-if="loginType1 === 'username1'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input">
+    </template>
+    <button @click="click2">click btn2</button>
+
+    <h1 v-show="ok">Hello!</h1>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            loginType:'username',
+            loginType1:'username1',
+            ok:false
+
+        },
+        methods:{
+            click:function(){
+                vm.loginType = vm.loginType ==='' ? 'username' :'';
+            } ,
+            click2:function(){
+                vm.loginType1 = vm.loginType1 ==='' ? 'username1' :'';
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

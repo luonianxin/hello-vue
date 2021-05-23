@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue使用模板语法插值</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-once>{{msg}}</p>
+    <p>using mustaches:{{rawHtml}}</p>
+    使用原生ｈｔｍｌ渲染元素<p v-html="rawHtml"></p>
+    <div v-bind:class="color">动态绑定元素</div>
+    <p>{{number+1}}</p>
+    <p>{{1==1 ?'yes':'No'}}</p>
+    <p>{{message.split('').reverse().join('')}}</p>
+</div>
+<script type="text/javascript">
+    var vm  = new Vue({
+        el:'#app',
+        data : {
+            msg:'hi vue.....',
+            rawHtml: '<span style="color:#ff0000">test rewHtml</span>',
+            color:'blue',
+            number:10,
+            ok:1,
+            message:'vue'
+        }
+    });
+    vm.msg="hi......"
+</script>
+<style type="text/css">
+    .blue{
+        color:blue
+    }
+    .red{
+        color:red
+    }
+</style>
+</body>
+</html>

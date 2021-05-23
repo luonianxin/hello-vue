@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+</head>
+<body>
+<div id="app">
+    本案例演示的是vue-for的使用方法:<br/>
+    <ul>
+        <li v-for="item ,index in items":key="index">
+        {{index}}    {{item.message}}
+        </li>
+    </ul>
+    <br/>
+    遍历对象ｋｅｙ－ｖａｌｕｅ<br/>
+    <p>
+
+        为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key attribute：
+    </p>
+    <ul>
+        <li v-for="value, key in Object" :key="key">
+          {{key}}  :  {{value}}
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            items:[{'message':'items message1'},{'message':'items message2'}],
+            Object:{
+                'name':'tom',
+                'birth day':'2020-04-23',
+                'age':26
+            }
+        }
+    });
+</script>
+</body>
+</html>

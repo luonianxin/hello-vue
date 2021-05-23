@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>style&class绑定</title>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+</head>
+<body>
+<div id="app">
+    <button class="static" v-bind:class="{active:isActive}">dsss</button>
+    <div class="test" v-bind:class="[ isActive ?'active':'',isStatic ? 'static':'']"
+         style="width: 200px;height: 200px;text-align: center;line-height: 200px;"  >
+        hi vue....
+    </div>
+    <div :style="{color:color,fontsize:size,background:isRed ? 'red':''}">
+        hello vue... dynamic bind style
+    </div>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isActive:true,
+            isStatic:true,
+            color:'blue',
+            size:'55px',
+            isRed:true
+
+
+        }
+
+    });
+
+</script>
+<style type="text/css">
+    .static{
+        background-color: lightseagreen;
+    }
+    .active{
+        font-size: 50px;
+    }
+    .test{
+        font-size: 25px;
+    }
+</style>
+</body>
+</html>

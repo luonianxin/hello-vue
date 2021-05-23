@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法指令</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<p v-if="seen">现在你看到我了．．．</p>
+    <h3>一些指令能够接收一个“参数”，在指令名称之后以冒号表示。例如，v-bind 指令可以用于响应式地更新 HTML attribute：</h3>
+    <a v-bind:href="url">这个链接是动态绑定的</a>
+
+    <div @click="click1">
+        <div @click.stop="click2">
+            click me!!!
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            seen:true,
+            url:'https://cn.vuejs.org/v2/guide/syntax.html'
+        },
+        methods:{
+            click1:function(){
+                console.log("parent's click1");
+            },
+            click2:function(){
+                console.log("child's click2");
+                alert("click2h bvn" +
+                    "" +
+                    "]b ");
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

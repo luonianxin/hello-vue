@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理</title>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+</head>
+<body>
+<div id="app">
+    本案例演示的是事件处理的方法:<br/>
+<p>事件绑定======================</p>
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+</div>
+
+<p>事件处理方法======================</p>
+<div id="example-2">
+    <!-- `greet` 是在下面定义的方法名 -->
+    <button v-on:click="greet">Greet</button>
+</div>
+<p>内联处理器的方法======================</p>
+<div id="example-3">
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+    <button v-on:click="warn('warn',$event)">Say warn</button>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            counter: 0
+        }
+    });
+    var vm2 = new Vue({
+        el: '#example-2',
+        data:{
+            name: 'Vue.js'
+        },
+        methods:{
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    });
+    // vm2.greet();
+    var vm3 = new Vue({
+        el: '#example-3',
+        data: {
+
+        },
+        methods:{
+            say: function (message) {
+                alert(message)
+            },
+            warn(msg,event){
+                if(event){
+                    event.preventDefault()
+                    console.log(event)
+                }
+                alert(msg)
+            }
+        }
+    });
+</script>
+</body>
+</html>
